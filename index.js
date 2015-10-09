@@ -4,7 +4,7 @@ var stormpath = require('express-stormpath');
 var app = express();
 app.use(stormpath.init(app, {
   application: {
-    href: 'https://api.stormpath.com/v1/applications/173vkD8p8nkeJb55sXM6WW'
+    href: 'https://api.stormpath.com/v1/applications/1ZBteF6RXF72vzwj1PvayM'
   },
   website: true
 }));
