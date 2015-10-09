@@ -12,6 +12,7 @@
     if(this.enteredText != this.spellingWord){
       return false;
     }else{
+      showReward = true;
       return true;
     }
   };
