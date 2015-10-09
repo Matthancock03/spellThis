@@ -1,7 +1,10 @@
 var express = require('express');
 var stormpath = require('express-stormpath');
+var List = require(__dirname + '/models/list');
+var Teacher = require(__dirname +'/models/teacher');
 
 var app = express();
+
 app.use(stormpath.init(app, {
   application: {
     href: 'https://api.stormpath.com/v1/applications/173vkD8p8nkeJb55sXM6WW'
