@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="Home">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Spell This!</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container-fluid full">
+      <div class="row clearfix full">
+        <div class='col-xs-3 mainDivs sidePanel'></div>
+        <div class="col-xs-6 mainDivs">
+          <h3 class="center-block">Spelling Test</h3>
+          <!-- Begin Spelling Panel -->
+          <div class='testDiv center-block' ng-controller="SpellingDiv as spelling">
+            <audio controls>
+              <source src="horse.ogg" type="audio/ogg">
+              <source src="horse.mp3" type="audio/mpeg">
+              Your browser does not support the audio tag.
+            </audio>
+            <input class="form-control spellInput" ng-model="spelling.enteredText" ng-class="{ wordRight : spelling.right()}" placeholder="Spell Here" type="text"/>
+            <button class="btn btn-group">Next</button>
+          </div>
+          <!-- End Spelling Panel -->
+
+          <!-- Begin Reward Panel -->
+          <div class='rewardDiv center-block' ng-controller='RewardDiv as reward'>
+            <div ng-show='reward.shouldShow()'>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_E2CNZIlVIg" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <!-- End Reward Panel -->
+        </div>
+        <div class='col-xs-3 mainDivs sidePanel'></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="home.js"></script>
+  </body>
+
+</html>

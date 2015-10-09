@@ -1,0 +1,22 @@
+html, body {
+  height: 100%;
+}
+.full {
+  height: 100%;
+}
+.loginPane {
+  width: 65%;
+  height: auto;
+}
+.black {
+  background-color: black;
+  height: 100%;
+}
+
+.headerText{
+  color: #A31111;
+}
+
+.mainDivs{
+  padding-top: 5%;
+}
