@@ -1,8 +1,9 @@
 @import '//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css';
 @import '//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css';
 
-#recordingslist{
-
+#recorderDiv{
+width: 75%;
+height: auto;
 }
 
 html, body {
@@ -14,28 +15,24 @@ html, body {
 .testDiv{
 margin-top: 15px;
 }
-.rewardDiv{
-  margin-top: 25px;
+.textIn{
+  text-align: right;
 }
-.spellInput{
-  margin: 20px 0px 10px 0px;
-  width: 50%;
+.audioSpan{
+  padding-top: 0;
+padding-bottom: 0;
+padding-left:  2px;
+padding-right: 2px;
 }
 .sidePanel{
   background-color: green;
   height: 100%;
 }
-.wordWrong{
-  background-color: red;
-}
-.wordRight{
-  background-color: rgba(0, 255, 0, 0.2);
-}
+
 .loginPane {
   width: 65%;
   height: auto;
 }
-
 .mainDivs{
   padding-top: 5%;
 }

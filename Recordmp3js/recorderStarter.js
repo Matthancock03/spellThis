@@ -1,6 +1,6 @@
 
 function __log(e, data) {
-  log.innerHTML += "\n" + e + " " + (data || '');
+  console.log("\n" + e + " " + (data || ''));
 }
 
 var audio_context;

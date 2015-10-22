@@ -18,36 +18,42 @@
   <body>
     <div class="container-fluid full">
       <div class="row clearfix full">
-        <div class='col-xs-3 mainDivs sidePanel'></div>
-        <div class="col-xs-6 mainDivs">
-          <h3 class="center-block">Create A Spelling List</h3>
+        <div class='col-xs-2 mainDivs sidePanel'></div>
+        <div class="col-xs-8 mainDivs">
+          <h2 style="text-align: center;">Create A Spelling List</h2>
 
-					<!-- Begin Recording Div -->
-          <div id="recorderDiv" ng-controller="Recorder">
-            <button ng-click="startRecording()" onclick="startRecording(this);">record</button>
-            <button disabled ng-click="stopRecording()" onclick="stopRecording(this);">stop</button>
+          <!-- Begin Recording Div -->
+          <div id="recorderDiv" class="center-block" ng-controller="Recorder">
 
-            <h2>Recordings</h2>
+            <h2>List</h2>
             <ul class="list-group" id="recordingslist"></ul>
           <li class="list-group-item" ng-repeat="word in words">
-            <h4>Word:</h4>
+            <h4>Word
+              {{$index}}:</h4>
             <div class="input-group">
-              <span class="input-group-addon"></span>
-              <input class="form-control" placeholder="Word Spelling" type="text">
+              <span class="input-group-addon audioSpan">
+                <audio controls ng-src="{{trustAsResourceUrl(word)}}"></audio>
+              </span>
+              <input class="form-control textIn" placeholder="Word Spelling" type="text">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-remove btn-danger " ng-click="remove($index)"></span>
+              </span>
             </div>
-            <audio controls ng-src="{{trustAsResourceUrl(word)}}"></audio>
-            <button aria-label="Left Align" class="btn btn-danger" type="button">
-              <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
-            </button>
           </li>
-					
+          <!-- Would like to remove logging.
           <h2>Log</h2>
           <pre id="log"></pre>
+					-->
+          <h5>To add a list item press record, say the word, and then press stop.</h5>
+          <h5>After recording is added to screen enter the spelling of the word.</h5>
+          <button onclick="startRecording(this);">record</button>
+          <button onclick="stopRecording(this);">stop</button>
+
         </div>
-				<!-- End Recording Div -->
+        <!-- End Recording Div -->
 
       </div>
-      <div class='col-xs-3 mainDivs sidePanel'></div>
+      <div class='col-xs-2 mainDivs sidePanel'></div>
     </div>
   </div>
   <script src="js/jquery-1.11.0.min.js"></script>

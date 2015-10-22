@@ -84,7 +84,7 @@
 
         console.log(data);
 		console.log("Converting to Mp3");
-		log.innerHTML += "\n" + "Converting to Mp3";
+		//log.innerHTML += "\n" + "Converting to Mp3";
 
         encoderWorker.postMessage({ cmd: 'init', config:{
             mode : 3,
@@ -99,7 +99,7 @@
             if (e.data.cmd == 'data') {
 
 				console.log("Done converting to Mp3");
-				log.innerHTML += "\n" + "Done converting to Mp3";
+				//log.innerHTML += "\n" + "Done converting to Mp3";
 
 				/*var audio = new Audio();
 				audio.src = 'data:audio/mp3;base64,'+encode64(e.data.buf);
@@ -196,7 +196,7 @@
 				contentType: false
 			}).done(function(data) {
 				//console.log("Data is: " + data);
-				log.innerHTML += "\n" + data;
+				//log.innerHTML += "\n" + data;
 			});
 		};
 		reader.readAsDataURL(mp3Blob);
