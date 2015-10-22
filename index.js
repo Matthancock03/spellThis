@@ -1,5 +1,9 @@
 var express = require('express');
 var stormpath = require('express-stormpath');
+
+var http = require('http');
+var util = require('util');
+var form = require(__dirname + '/controllers/formParse');
 var List = require(__dirname + '/models/list');
 var Teacher = require(__dirname +'/models/teacher');
 
@@ -28,6 +32,12 @@ app.get("/home", function(req,res){
 
 app.get("/createList", function(req,res){
   res.status(200).sendFile(__dirname + '/views/createList.html');
+});
+
+app.post("/upload", function(req,res){
+  //form.parse(req);
+  console.log(req.body);
+  res.status(200).send("Request body: " + req.body);
 });
 
 app.get("/example", function(req,res){

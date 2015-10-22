@@ -1,3 +1,4 @@
+
 function __log(e, data) {
   log.innerHTML += "\n" + e + " " + (data || '');
 }
@@ -8,7 +9,7 @@ var recorder;
 function startUserMedia(stream) {
   var input = audio_context.createMediaStreamSource(stream);
   __log('Media stream created.' );
-__log("input sample rate " +input.context.sampleRate);
+  __log("input sample rate " +input.context.sampleRate);
 
   // Feedback!
   //input.connect(audio_context.destination);
@@ -40,22 +41,25 @@ function stopRecording(button) {
 }
 
 function createDownloadLink() {
-  recorder && recorder.exportWAV(function(blob) {
+    recorder && recorder.exportWAV(function(blob) {
     var url = URL.createObjectURL(blob);
-    var li = document.createElement('li');
-    var au = document.createElement('audio');
-    var hf = document.createElement('a');
-
-    au.controls = true;
-    console.log(blob);
-    au.src = url;
-    hf.href = url;
-    hf.download = new Date().toISOString() + '.wav';
-    hf.innerHTML = hf.download;
-    li.appendChild(au);
-    li.appendChild(hf);
-    recordingslist.appendChild(li);
+    //var li = document.createElement('li');
+    //var au = document.createElement('audio');
+    //var hf = document.createElement('a');
+    angular.element(document.getElementById('recorderDiv')).scope().$apply(function(scope){
+            scope.words.push(url);
+    });
+    //au.controls = true;
+    //console.log(blob);
+    //au.src = url;
+    //hf.href = url;
+    //hf.download = new Date().toISOString() + '.wav';
+    //hf.innerHTML = hf.download;
+    //li.appendChild(au);
+    //li.appendChild(hf);
+    //recordingslist.appendChild(li);
   });
+
 }
 
 window.onload = function init() {

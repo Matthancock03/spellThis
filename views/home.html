@@ -16,11 +16,6 @@
           <h3 class="center-block">Spelling Test</h3>
           <!-- Begin Spelling Panel -->
           <div class='testDiv center-block' ng-controller="SpellingDiv as spelling">
-            <audio controls>
-              <source src="horse.ogg" type="audio/ogg">
-              <source src="horse.mp3" type="audio/mpeg">
-              Your browser does not support the audio tag.
-            </audio>
             <input class="form-control spellInput" ng-model="spelling.enteredText" ng-class="{ wordRight : spelling.right()}" placeholder="Spell Here" type="text"/>
             <button class="btn btn-group">Next</button>
           </div>

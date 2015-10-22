@@ -105,25 +105,25 @@
 				audio.src = 'data:audio/mp3;base64,'+encode64(e.data.buf);
 				audio.play();*/
 
-				//console.log ("The Mp3 data " + e.data.buf);
+				//console.log ("The Mp3 data " + encode64(e.data.buf));
+        angular.element(document.getElementById('recorderDiv')).scope().appendWord('data:audio/mp3;base64,'+encode64(e.data.buf));
 
-				var mp3Blob = new Blob([new Uint8Array(e.data.buf)], {type: 'audio/mp3'});
-				uploadAudio(mp3Blob);
+				uploadAudio(e.data.buf);
 
 				var url = 'data:audio/mp3;base64,'+encode64(e.data.buf);
 				var li = document.createElement('li');
 				var au = document.createElement('audio');
-				var hf = document.createElement('a');
+        console.log(url);
+				//var hf = document.createElement('a');
 
-				au.controls = true;
-				au.src = url;
-				hf.href = url;
-				hf.download = 'audio_recording_' + new Date().getTime() + '.mp3';
-				hf.innerHTML = hf.download;
-				li.appendChild(au);
-				li.appendChild(hf);
-				recordingslist.appendChild(li);
-
+				//au.controls = true;
+				//au.src = url;
+				//hf.href = url;
+				//hf.download = 'audio_recording_' + new Date().getTime() + '.mp3';
+				//hf.innerHTML = hf.download;
+				//li.appendChild(au);
+				//li.appendChild(hf);
+				//recordingslist.appendChild(li);
             }
         };
 	  };
@@ -179,24 +179,27 @@
 
 	function uploadAudio(mp3Data){
 		var reader = new FileReader();
+    var mp3Blob = new Blob([new Uint8Array(mp3Data)], {type: 'audio/mp3'});
+
 		reader.onload = function(event){
 			var fd = new FormData();
-			var mp3Name = encodeURIComponent('audio_recording_' + new Date().getTime() + '.mp3');
-			console.log("mp3name = " + mp3Name);
-			fd.append('fname', mp3Name);
-			fd.append('data', event.target.result);
+			//var mp3Name = encodeURIComponent('audio_recording_' + new Date().getTime() + '.mp3');
+			//console.log("mp3name = " + mp3Name);
+			//fd.append('fname', mp3Name);
+       //console.log("Data " + mp3Data);
+			//fd.append('data', event.target.result);
 			$.ajax({
 				type: 'POST',
-				url: 'upload.php',
-				data: fd,
+				url: 'upload',
+				data: mp3Blob,
 				processData: false,
 				contentType: false
 			}).done(function(data) {
-				//console.log(data);
+				//console.log("Data is: " + data);
 				log.innerHTML += "\n" + data;
 			});
 		};
-		reader.readAsDataURL(mp3Data);
+		reader.readAsDataURL(mp3Blob);
 	}
 
     source.connect(this.node);
